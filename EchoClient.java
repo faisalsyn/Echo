@@ -36,6 +36,7 @@ public class EchoClient
 		
 		try
 		{
+			System.out.println(args[0] + " " + args[1]);
 			Socket s = new Socket(args[1], 9999);
 			BufferedReader r = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			PrintWriter w = new PrintWriter(s.getOutputStream(), true);
