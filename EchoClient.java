@@ -43,17 +43,17 @@ public class EchoClient
 			String line;
 			
 			String buffer = "";
-			for ( int i = 0; i < size ; i++ ){
+			for ( int i = 0; i < size ; i++ ){ // should be size - size of ts
 				buffer += "0";
 			}
 			
 			for ( int i = 0 ; i < trials ; i++ ){
-				Date d = new Date();
-				w.println(d.getTime() + ":" + buffer);
+				//Date d = new Date();
+				w.println(System.nanoTime() + ":" + buffer);
 				line = r.readLine();
 				if ( line != null )
-					d = new Date();
-					System.out.println(d.getTime() - Long.parseLong(line));
+					//d = new Date();
+					System.out.println(System.nanoTime() - Long.parseLong(line));
 			}
 			
 			w.println("bye");
