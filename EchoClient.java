@@ -34,6 +34,14 @@ public class EchoClient
 		int size = 1024;
 		int trials = 1000;
 		
+		if ( args.length < 3 ) {
+			System.out.println ("USAGE: java EchoClient [server-address] [packet-size] [number-of-packets]");
+			System.exit(0);
+		}
+		
+		size = Integer.parseInt(args[1]);
+		trials = Integer.parseInt(args[2]);
+		
 		try
 		{
 			Socket s = new Socket(args[0], 9999);
