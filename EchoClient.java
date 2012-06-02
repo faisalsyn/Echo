@@ -48,7 +48,7 @@ public class EchoClient
 			BufferedReader r = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			PrintWriter w = new PrintWriter(s.getOutputStream(), true);
 			BufferedReader con = new BufferedReader(new InputStreamReader(System.in));
-			String line;
+			String line = null;
 			
 			String buffer = "";
 			for ( int i = 0; i < size ; i++ ){ // should be size - size of ts
@@ -58,7 +58,11 @@ public class EchoClient
 			for ( int i = 0 ; i < trials ; i++ ){
 				//Date d = new Date();
 				w.println(System.nanoTime() + ":" + buffer);
-				line = r.readLine();
+				try {
+					line = r.readLine();
+				} catch (Exception e) {
+					System.out.print ("");
+				}
 				if ( line != null )
 					//d = new Date();
 					System.out.println(System.nanoTime() - Long.parseLong(line));
